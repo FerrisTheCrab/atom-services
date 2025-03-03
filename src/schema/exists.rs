@@ -1,6 +1,8 @@
+#[cfg(feature = "core")]
 use axum::{extract::State, http::StatusCode, Json};
 use serde::{Deserialize, Serialize};
 
+#[cfg(feature = "core")]
 use crate::{
     router::{InternalRouter, Router},
     Service, ServiceInstance,
@@ -20,6 +22,7 @@ pub enum ExistsRes {
     Error { reason: String },
 }
 
+#[cfg(feature = "core")]
 impl ExistsRes {
     pub fn success(value: bool) -> Self {
         Self::Exists { value }
@@ -42,6 +45,7 @@ impl ExistsRes {
     }
 }
 
+#[cfg(feature = "core")]
 impl InternalRouter {
     pub async fn exists(instance: &ServiceInstance, payload: ExistsReq) -> ExistsRes {
         Service::exists(instance, &payload.id)
@@ -51,6 +55,7 @@ impl InternalRouter {
     }
 }
 
+#[cfg(feature = "core")]
 impl Router {
     pub async fn exists(
         State(instance): State<ServiceInstance>,

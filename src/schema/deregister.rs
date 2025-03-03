@@ -1,6 +1,8 @@
+#[cfg(feature = "core")]
 use axum::{extract::State, http::StatusCode, Json};
 use serde::{Deserialize, Serialize};
 
+#[cfg(feature = "core")]
 use crate::{
     router::{InternalRouter, Router},
     Service, ServiceInstance,
@@ -20,6 +22,7 @@ pub enum DeregisterRes {
     Error { reason: String },
 }
 
+#[cfg(feature = "core")]
 impl DeregisterRes {
     pub fn success(_: ()) -> Self {
         Self::Deregistered
@@ -42,6 +45,7 @@ impl DeregisterRes {
     }
 }
 
+#[cfg(feature = "core")]
 impl InternalRouter {
     pub async fn deregister(instance: &ServiceInstance, payload: DeregisterReq) -> DeregisterRes {
         Service::deregister(instance, &payload.id)
@@ -51,6 +55,7 @@ impl InternalRouter {
     }
 }
 
+#[cfg(feature = "core")]
 impl Router {
     pub async fn deregister(
         State(instance): State<ServiceInstance>,

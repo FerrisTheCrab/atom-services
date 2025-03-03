@@ -1,6 +1,8 @@
+#[cfg(feature = "core")]
 use axum::{extract::State, http::StatusCode, Json};
 use serde::{Deserialize, Serialize};
 
+#[cfg(feature = "core")]
 use crate::{
     router::{InternalRouter, Router},
     Service, ServiceInstance,
@@ -20,6 +22,7 @@ pub enum RegisterRes {
     Error { reason: String },
 }
 
+#[cfg(feature = "core")]
 impl RegisterRes {
     pub fn success(_: ()) -> Self {
         Self::Registered
@@ -42,6 +45,7 @@ impl RegisterRes {
     }
 }
 
+#[cfg(feature = "core")]
 impl InternalRouter {
     pub async fn register(instance: &ServiceInstance, payload: RegisterReq) -> RegisterRes {
         Service::register(instance, &payload.id)
@@ -51,6 +55,7 @@ impl InternalRouter {
     }
 }
 
+#[cfg(feature = "core")]
 impl Router {
     pub async fn register(
         State(instance): State<ServiceInstance>,
