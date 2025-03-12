@@ -25,5 +25,5 @@ features = [
 ]
 
 [features]
-default = [ "core" ]
+default = [ ]
 core = [ "dep:mongodb", "dep:futures", "dep:axum" ]

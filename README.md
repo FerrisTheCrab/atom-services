@@ -8,6 +8,9 @@
 cargo install --git https://github.com/ferristhecrab/atom-services
 ```
 
+You **must** compile services with The following feature flags to run is as an executable
+- core (required)
+
 ### Running
 
 #### Prerequisite
